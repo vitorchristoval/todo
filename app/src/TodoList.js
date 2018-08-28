@@ -10,6 +10,7 @@ class TodoList extends Component {
         };
 
         this.adicionarTarfa = this.adicionarTarfa.bind(this);
+        this.deleteTarefa = this.deleteTarefa.bind(this);
     }
     adicionarTarfa(e) {
         if (this._inputElement.value !== "") {
@@ -32,14 +33,15 @@ class TodoList extends Component {
         e.preventDefault();
     }
     deleteTarefa(key) {
-        var filteredItems = this.state.items.filter(function (item) {
+        var itensFiltrados = this.state.items.filter(function (item) {
           return (item.key !== key);
         });
        
         this.setState({
-          items: filteredItems
+          items: itensFiltrados
         });
       }
+
     render() {
         return (
             <div className="App">

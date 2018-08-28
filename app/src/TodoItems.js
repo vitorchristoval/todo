@@ -1,9 +1,21 @@
 import React, { Component } from "react";
 
 class TodoItems extends Component {
-    criarTarefas(item) {
-        return <li key={item.key}><input type="checkbox" onClick={() => this.delete(item.key)}/>{item.text}</li>
+    constructor(props) {
+        super(props);
+
+        this.criarTarefas = this.criarTarefas.bind(this);
     }
+
+    delete(key) {
+        
+        //deleta tarefa    this.props.delete(key);
+    }
+
+    criarTarefas(item) {
+        return <li key={item.key}><input type="checkbox" onChange={() => this.delete(item.key)} />{item.text}</li>
+    }
+
 
     render() {
         var Lista = this.props.entries;
