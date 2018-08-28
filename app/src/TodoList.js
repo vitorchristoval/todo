@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import TodoItems from "./TodoItems";
 
 class TodoList extends Component {
     constructor(props) {
@@ -31,9 +31,18 @@ class TodoList extends Component {
 
         e.preventDefault();
     }
+    deleteTarefa(key) {
+        var filteredItems = this.state.items.filter(function (item) {
+          return (item.key !== key);
+        });
+       
+        this.setState({
+          items: filteredItems
+        });
+      }
     render() {
         return (
-            <div className="">
+            <div className="App">
             <div className="">
               <form onSubmit={this.adicionarTarfa}>
                 <input ref={(a) => this._inputElement = a} 
@@ -42,6 +51,7 @@ class TodoList extends Component {
                 <button type="submit">adicionar</button>
               </form>
             </div>
+            <TodoItems entries={this.state.items}  delete={this.deleteTarefa}/>
           </div>
         );
     }
